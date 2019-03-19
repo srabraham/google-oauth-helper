@@ -23,13 +23,13 @@ import (
 )
 
 var (
-	clientID     = flag.String("clientid", "", "OAuth 2.0 Client ID.  If non-empty, overrides --clientid_file")
-	clientIDFile = flag.String("clientid-file", "clientid.dat",
+	clientID     = flag.String("google-clientid", "", "OAuth 2.0 Client ID.  If non-empty, overrides --clientid_file")
+	clientIDFile = flag.String("google-clientid-file", "clientid.dat",
 		"Name of a file containing just the project's OAuth 2.0 Client ID from https://developers.google.com/console.")
-	secret     = flag.String("secret", "", "OAuth 2.0 Client Secret.  If non-empty, overrides --secret_file")
-	secretFile = flag.String("secret-file", "clientsecret.dat",
+	secret     = flag.String("google-secret", "", "OAuth 2.0 Client Secret.  If non-empty, overrides --secret_file")
+	secretFile = flag.String("google-secret-file", "clientsecret.dat",
 		"Name of a file containing just the project's OAuth 2.0 Client Secret from https://developers.google.com/console.")
-	cacheToken = flag.Bool("cachetoken", true, "cache the OAuth 2.0 token")
+	cacheToken = flag.Bool("google-cachetoken", true, "cache the OAuth 2.0 token")
 
 	scopes        = make([]string, 0)
 	tokenFileName = "gauth-tok"

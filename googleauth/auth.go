@@ -185,4 +185,3 @@ func valueOrFileContents(value string, filename string) string {
 	}
 	return strings.TrimSpace(string(slurp))
 }
-

@@ -19,7 +19,6 @@ import (
 	"time"
 
 	"golang.org/x/oauth2"
-	"golang.org/x/oauth2/google"
 )
 
 var (
@@ -35,6 +34,13 @@ var (
 	tokenFileName = "gauth-tok"
 	oauthClient   *http.Client
 )
+
+var googleEndpoint = oauth2.Endpoint{
+	AuthURL:       "https://accounts.google.com/o/oauth2/auth",
+	TokenURL:      "https://oauth2.googleapis.com/token",
+	DeviceAuthURL: "https://oauth2.googleapis.com/device/code",
+	AuthStyle:     oauth2.AuthStyleInParams,
+}
 
 func AddScope(newScopes ...string) error {
 	if oauthClient != nil {
@@ -60,7 +66,7 @@ func GetClient() (*http.Client, error) {
 		config := &oauth2.Config{
 			ClientID:     valueOrFileContents(*clientID, *clientIDFile),
 			ClientSecret: valueOrFileContents(*secret, *secretFile),
-			Endpoint:     google.Endpoint,
+			Endpoint:     googleEndpoint,
 			Scopes:       scopes,
 		}
 		ctx := context.Background()
